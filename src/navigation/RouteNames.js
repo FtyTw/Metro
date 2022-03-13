@@ -1,2 +1,2 @@
-export const MovieList = 'movies'
-export const Loading = 'loading'
+export const MovieList = 'movies';
+export const Loading = 'loading';

@@ -1,9 +1,10 @@
 import React from 'react';
-
-import {Provider} from 'react-redux';
-import {Routes} from './src/navigation';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { Routes } from './src/navigation';
 import store from './src/state/store';
 
+global.PropTypes = PropTypes;
 // global.XMLHttpRequest = global.originalXMLHttpRequest
 //   ? global.originalXMLHttpRequest
 //   : global.XMLHttpRequest;
@@ -12,9 +13,9 @@ import store from './src/state/store';
 //   : global.FormData;
 
 const App = () => (
-  <Provider store={store}>
-    <Routes> </Routes>
-  </Provider>
+    <Provider store={store}>
+        <Routes> </Routes>
+    </Provider>
 );
 
 export default App;

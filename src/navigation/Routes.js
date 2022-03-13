@@ -1,11 +1,11 @@
-import React from 'react'
-import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Loading} from './RouteNames'
-import {Loading as LoadingScreen} from '../screens'
+import {Loading} from './RouteNames';
+import {Loading as LoadingScreen} from '../screens';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
     return (
@@ -16,15 +16,15 @@ const MainStack = () => {
                 component={LoadingScreen}
             />
         </Stack.Navigator>
-    )
-}
+    );
+};
 
 export const Routes = () => {
     return (
         <NavigationContainer>
             <MainStack />
         </NavigationContainer>
-    )
-}
+    );
+};
 
-export default Routes
+export default Routes;
