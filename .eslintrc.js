@@ -26,5 +26,6 @@ module.exports = {
     },
     globals: {
         PropTypes: true,
+        it: true,
     },
 };

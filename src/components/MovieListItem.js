@@ -1,47 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useAppTheme } from '../hooks';
+
 export const MovieListItem = ({
     onPress = () => console.log('press to movie item'),
     title = 'Spider man: Long way to disaster of franchise',
     subtitle = '2022',
-}) => (
-    <StyledPressable onPress={onPress}>
-        <StyledImageBackground
-            source={{ uri: 'https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg' }}
-        >
-            <TitleWrapper>
-                <Title>{title}</Title>
-                <Subtitle>{subtitle}</Subtitle>
-            </TitleWrapper>
-        </StyledImageBackground>
-    </StyledPressable>
-);
+    poster,
+}) => {
+    const {
+        colors: { card },
+        shadows: { main },
+    } = useAppTheme();
+
+    return (
+        <StyledPressable onPress={onPress}>
+            <Wrapper background={card} shadow={main}>
+                <StyledImageBackground source={{ uri: poster }}>
+                    <TitleWrapper>
+                        <Title>{title}</Title>
+                        <Subtitle>{subtitle}</Subtitle>
+                    </TitleWrapper>
+                </StyledImageBackground>
+            </Wrapper>
+        </StyledPressable>
+    );
+};
 
 MovieListItem.propTypes = {
     onPress: PropTypes.func,
     title: PropTypes.string,
     subtitle: PropTypes.string,
+    poster: PropTypes.string,
 };
 
-const StyledPressable = styled.Pressable`
-  box-shadow: 0px 3px 6px #00000029;
-  elevation: 9;
+const Wrapper = styled.View`
+  width: 140px;
+  height: 200px;
+  background: ${({ background }) => background};
+  ${({ shadow }) => shadow};
+  border-radius: 15px;
 `;
+
+const StyledPressable = styled.Pressable``;
 
 const StyledImageBackground = styled.ImageBackground.attrs({
     imageStyle: { borderRadius: 15 },
 })`
-  width: 140px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   justify-content: flex-end;
-  overflow: hidden;
 `;
 
 const TitleWrapper = styled.View`
   height: 70px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   padding: 10px 12px 14px 12px;
