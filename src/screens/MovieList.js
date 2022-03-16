@@ -1,38 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { MovieListItem } from '../components';
+import { MovieListItem, DefaultSafeArea } from '../components';
 import { useSelectMoviesListPrepared } from '../state/hooks';
-import { useAppTheme } from '../hooks';
+import { useAppTheme, useNavigationFunc } from '../hooks';
 
 export const MovieList = () => {
     const listData = useSelectMoviesListPrepared();
     const {
         paddings: { paddingHorizontal },
     } = useAppTheme();
+    const { navigateToDetails } = useNavigationFunc();
 
     return (
-        <StyledSafeAreView>
+        <DefaultSafeArea>
             <MovieScrollView paddingHorizontal={paddingHorizontal}>
-                {listData.map(({ poster, backdrop, original_title, releaseYear, id }, index) => (
-                    <MovieWrapper index={index} key={id}>
-                        <MovieListItem
-                            onPress={() => console.log(id)}
-                            title={original_title}
-                            subtitle={releaseYear}
-                            poster={poster}
-                            backdrop={backdrop}
-                        />
-                    </MovieWrapper>
-                ))}
+                {listData.map((movie, index) => {
+                    const { poster, backdrop, original_title, releaseYear, id } = movie;
+                    return (
+                        <MovieWrapper index={index} key={id}>
+                            <MovieListItem
+                                onPress={() => navigateToDetails(movie)}
+                                title={original_title}
+                                subtitle={releaseYear}
+                                poster={poster}
+                                backdrop={backdrop}
+                            />
+                        </MovieWrapper>
+                    );
+                })}
             </MovieScrollView>
-        </StyledSafeAreView>
+        </DefaultSafeArea>
     );
 };
 
-const StyledSafeAreView = styled.SafeAreaView`
-  flex: 1;
-`;
 const MovieScrollView = styled.ScrollView.attrs({
     contentContainerStyle: {
         flexDirection: 'row',

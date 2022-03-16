@@ -3,13 +3,13 @@ import { ActivityIndicator, Animated } from 'react-native';
 import styled from 'styled-components';
 
 const Wrapper = styled.View`
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    z-index: ${({ zIndex }) => zIndex};
-    position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: ${({ zIndex }) => zIndex};
+  position: absolute;
 `;
 
 const AnimatedWrapper = Animated.createAnimatedComponent(Wrapper);

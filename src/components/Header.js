@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TextHandler } from './TextHandler';
 
 export const Header = ({ title, extraStyles }) => {
     const largeTitle = title.toUpperCase();
@@ -7,7 +8,7 @@ export const Header = ({ title, extraStyles }) => {
     return (
         <HeaderSafeAreaView>
             <HeaderView style={{ ...extraStyles }}>
-                <HeaderTitle>{largeTitle}</HeaderTitle>
+                <TextHandler size="xxl">{largeTitle}</TextHandler>
             </HeaderView>
         </HeaderSafeAreaView>
     );
@@ -25,9 +26,4 @@ const HeaderSafeAreaView = styled.SafeAreaView`
 
 const HeaderView = styled.View`
   padding-bottom: 10px;
-`;
-
-const HeaderTitle = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
 `;
