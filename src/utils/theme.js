@@ -21,6 +21,11 @@ const CustomTheme = (theme) => ({
         xl: 18,
         xxl: 24,
     },
+    defaults: {
+        light: '#ffffff',
+        dark: '#1C1C1C',
+        font: '#FFFFFFE3',
+    },
 });
 
 export const MetroTheme = {

@@ -24,13 +24,9 @@ export const SimilarScroll = ({ id }) => {
                     return (
                         <SimilarItem onPress={() => navigateToDetails(movie)} key={id}>
                             <SimilarItemWrapper>
-                                <ImageBackgroundComponent
-                                    resizeMode="cover"
-                                    source={backdrop}
-                                    imageStyle={{ height: '100%', width: '100%' }}
-                                />
+                                <ImageBackgroundComponent resizeMode="cover" source={backdrop} />
                             </SimilarItemWrapper>
-                            <TextHandler inverted size="l" uppercase>
+                            <TextHandler size="l" uppercase>
                                 {title}
                             </TextHandler>
                         </SimilarItem>

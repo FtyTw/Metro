@@ -12,12 +12,19 @@ export const TextHandler = ({
     light = false,
     ...attrs
 }) => {
-    const { fontColor, invertedColor, fonts } = useAppTheme();
+    const {
+        fontColor,
+        invertedColor,
+        fonts,
+        defaults: { font },
+    } = useAppTheme();
+    const colorsInverted = inverted ? fontColor : invertedColor;
+    const defaultColors = inverted ? colorsInverted : font;
     return (
         <StyledText
             containerStyles={containerStyles}
             size={fonts[size]}
-            color={inverted ? invertedColor : fontColor}
+            color={defaultColors}
             light={light}
             {...attrs}
         >
@@ -36,9 +43,9 @@ TextHandler.propTypes = {
 };
 
 const StyledText = styled.Text`
-  font-weight: ${({ light }) => (light ? 'normal' : 'bold')};
-  font-size: ${({ size }) => size}px;
-  color: ${({ color }) => color};
-  font-family: 'Helvetica Neue';
-  ${({ containerStyles }) => containerStyles}
+    font-weight: ${({ light }) => (light ? 'normal' : 'bold')};
+    font-size: ${({ size }) => size}px;
+    color: ${({ color }) => color};
+    font-family: 'Helvetica Neue';
+    ${({ containerStyles }) => containerStyles}
 `;

@@ -26,9 +26,9 @@ const cardOptionsOS = {
 
 const MainStack = () => {
     const {
+        defaults: { dark },
         paddings: { paddingHorizontal },
         background,
-        invertedBackground,
     } = useAppTheme();
     useFetchMovies();
     const { loading, error } = useFetchAllMoviesData();
@@ -41,7 +41,6 @@ const MainStack = () => {
     }
     return (
         <Stack.Navigator
-            // initialRouteName={MovieDetails}
             screenOptions={{
                 cardStyle: {
                     ...cardOptionsOS,
@@ -63,7 +62,7 @@ const MainStack = () => {
             <Stack.Screen
                 name={MovieDetails}
                 component={MovieDetailsScreen}
-                options={{ cardStyle: { backgroundColor: invertedBackground }, headerShown: false }}
+                options={{ cardStyle: { backgroundColor: dark }, headerShown: false }}
             />
         </Stack.Navigator>
     );

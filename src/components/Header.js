@@ -8,7 +8,9 @@ export const Header = ({ title, extraStyles }) => {
     return (
         <HeaderSafeAreaView>
             <HeaderView style={{ ...extraStyles }}>
-                <TextHandler size="xxl">{largeTitle}</TextHandler>
+                <TextHandler inverted size="xxl">
+                    {largeTitle}
+                </TextHandler>
             </HeaderView>
         </HeaderSafeAreaView>
     );
@@ -20,10 +22,10 @@ Header.propTypes = {
 };
 
 const HeaderSafeAreaView = styled.SafeAreaView`
-  height: 110px;
-  justify-content: flex-end;
+    height: 110px;
+    justify-content: flex-end;
 `;
 
 const HeaderView = styled.View`
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 `;

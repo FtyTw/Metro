@@ -28,30 +28,30 @@ export const MovieDetails = ({ route }) => {
                 </ImageWrapper>
 
                 <PaddingWrapper>
-                    <TextHandler size="xl" inverted light>
+                    <TextHandler size="xl" light>
                         {releaseYear}
                     </TextHandler>
 
                     <Section>
-                        <TextHandler containerStyles={titleStyles} size="xxl" uppercase inverted>
+                        <TextHandler containerStyles={titleStyles} size="xxl" uppercase>
                             {original_title}
                         </TextHandler>
                     </Section>
 
                     <Section>
-                        <TextHandler size="xl" uppercase inverted>
+                        <TextHandler size="xl" uppercase>
                             overview:
                         </TextHandler>
                     </Section>
 
                     <Section>
-                        <TextHandler size="xl" inverted light>
+                        <TextHandler size="xl" light>
                             {overview}
                         </TextHandler>
                     </Section>
 
                     <Section>
-                        <TextHandler size="xl" uppercase inverted>
+                        <TextHandler size="xl" uppercase>
                             similar movies:
                         </TextHandler>
                     </Section>
