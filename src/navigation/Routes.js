@@ -1,15 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { MovieList, MovieDetails } from './RouteNames';
-import {
-    Loading as LoadingScreen,
-    MovieList as MovieListScreen,
-    MovieDetails as MovieDetailsScreen,
-} from '../screens';
-import { Header } from '../components';
+import { MovieList as MovieListScreen, MovieDetails as MovieDetailsScreen } from '../screens';
+import { Header, ErrorLoading, Loading } from '../components';
 import { useFetchMovies } from '../state/dispatchers';
 import { useFetchAllMoviesData } from '../state/hooks';
 import { useAppTheme } from '../hooks';
@@ -30,14 +26,20 @@ const MainStack = () => {
         paddings: { paddingHorizontal },
         background,
     } = useAppTheme();
-    useFetchMovies();
+
+    const fetchMoviesList = useFetchMovies();
+
+    useEffect(() => {
+        fetchMoviesList();
+    }, []);
+
     const { loading, error } = useFetchAllMoviesData();
 
     if (loading) {
-        return <LoadingScreen />;
+        return <Loading />;
     }
     if (error) {
-        return null;
+        return <ErrorLoading />;
     }
     return (
         <Stack.Navigator
@@ -68,9 +70,9 @@ const MainStack = () => {
     );
 };
 
-const onRouteChange = ({ index, routeNames }) => {
+const onRouteChange = ({ index = null, routeNames }) => {
     const lightStatusBarScreens = ['movies'];
-    const currentRouteName = routeNames[index];
+    const currentRouteName = typeof index === 'number' && routeNames ? routeNames[index] : index;
     StatusBar.setBarStyle(
         lightStatusBarScreens.includes(currentRouteName) ? 'dark-content' : 'light-content'
     );

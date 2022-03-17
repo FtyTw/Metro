@@ -5,3 +5,5 @@ export * from './ImageBackgroundComponent.js';
 export * from './TextHandler.js';
 export * from './DefaultSafeArea';
 export * from './SimilarScroll';
+export * from './ErrorLoading';
+export * from './Loading';
